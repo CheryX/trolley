@@ -67,13 +67,15 @@ function shuffle(array) {
     return array;
 } 
 
-function roundIter() {
+const delay = ms => new Promise(res => setTimeout(res, ms));
+async function roundIter() {
     
     // Good or bad option
     let array = (Math.floor(Math.random() * 2)) ? goodThings : badThings
 
     shuffle(array);
     $("#game > button").map((i, e) => {e.innerText = array[i][0]});
+    await $("#game > button").attr('disabled','disabled');
 
     let upperText = [{text: array[0][0], color: "black", font: "Roboto"}];
     let lowerText = [{text: array[1][0], color: "black", font: "Roboto"}];
@@ -91,5 +93,8 @@ function roundIter() {
     var img2 = new Image();
     img2.onload = () => ctx.drawImage(img2, 800, 400, 280, 180); 
     img2.src = array[1][1];
+
+    await delay(100);
+    await $("#game > button").removeAttr('disabled');
 
 }
