@@ -1,8 +1,9 @@
 const canvas = $("#trolley")[0];
 const ctx = canvas.getContext("2d");
 
-// data needed
-let choices = ["linux", "kabanosy"]
+// XD
+let goodThings = ["linux", "kabanosy", "coffee"]
+let badThings = ["france", "england", "ubuntu"]
 
 // Draw the image
 var template = new Image();
@@ -38,11 +39,14 @@ function shuffle(array) {
 
 function roundIter() {
     
-    shuffle(choices);
-    $("#game > button").map((i, e) => {e.innerText = choices[i]});
+    // Good or bad option
+    let array = (Math.floor(Math.random() * 2)) ? goodThings : badThings
 
-    let upperText = [{text: choices[0], color: "black", font: "Roboto"}];
-    let lowerText = [{text: choices[1], color: "black", font: "Roboto"}];
+    shuffle(array);
+    $("#game > button").map((i, e) => {e.innerText = array[i]});
+
+    let upperText = [{text: array[0], color: "black", font: "Roboto"}];
+    let lowerText = [{text: array[1], color: "black", font: "Roboto"}];
 
     ctx.drawImage(template, 0, 0);
     textBox(ctx, 750, 180, 300, 100, upperText, 90, [1, 1]);
