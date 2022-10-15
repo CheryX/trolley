@@ -94,7 +94,7 @@ async function roundIter() {
     img2.onload = () => ctx.drawImage(img2, 800, 400, 280, 180); 
     img2.src = array[1][1];
 
-    await delay(100);
+    await delay(200);
     await $("#game > button").removeAttr('disabled');
 
 }
