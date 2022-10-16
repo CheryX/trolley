@@ -2,7 +2,6 @@ const canvas = $("#trolley")[0];
 const ctx = canvas.getContext("2d");
 
 // XD
-// let goodThings = ["linux", "kabanosy", "coffee"]
 let goodThings = [
     ["linux", "https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png"],
     ["kabanosy", "https://tarczynski.pl/upload/images/EXCLUSIVE-Cielece-BEZ-CIENIA-min_60488321cc681_m.png"],
@@ -19,6 +18,11 @@ let goodThings = [
     ["Szymon Strumień Odrzutowy", "https://steamuserimages-a.akamaihd.net/ugc/1838033402829795098/E7E7C3411D3F025260E2C81C32516578B2C2CA48/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false"],
     ["blåhaj", "https://www.ikea.com/pl/pl/images/products/blahaj-pluszak-rekin__0710175_pe727378_s5.jpg"],
     ["blåhaj junior", "https://www.ikea.com/pl/pl/images/products/blahaj-pluszak-maly-rekin__0716615_pe730956_s5.jpg"],
+    ["gordon freeman", "https://static.wikia.nocookie.net/half-life/images/3/3f/FreemanHL1.png/revision/latest?cb=20210424155951&path-prefix=en"],
+    ["jesse pink", "https://static.wikia.nocookie.net/breakingbad/images/0/05/Season_2_-_Jesse.jpg"],
+    ["waluigi", "https://mario.wiki.gallery/images/thumb/2/27/SuperMarioParty_Waluigi.png/1200px-SuperMarioParty_Waluigi.png"],
+    ["wario", "https://upload.wikimedia.org/wikipedia/en/8/81/Wario.png"],
+    // ["", ""], 
 ]
 let badThings = [
     ["england", "https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/1200px-Flag_of_England.svg.png"],
@@ -32,7 +36,14 @@ let badThings = [
     ["rascal", "https://www.minecraft.net/content/dam/games/minecraft/screenshots/rascal_Tile_1x1_277x277.jpg"],
     ["sniffer", "https://preview.redd.it/61vyudktptr91.png?auto=webp&s=d60bbdee9e2ad1d08415d98b1679ec21b0cf4634"],
     ["spanish people", "https://media.istockphoto.com/photos/frenchman-with-french-baguettes-picture-id108224580?k=20&m=108224580&s=612x612&w=0&h=xVpZq1ArRq_UJJdISrWYMn45lBORs2-3afoY7x5u2KI="],
-    // ["", ""],
+    ["french", "https://i.pinimg.com/originals/0d/28/46/0d2846c03ee4353c5f771dbe6853535c.jpg"],
+    ["mistral (she is french)", "https://static.wikia.nocookie.net/metalgear/images/a/a1/MistralPortrait.png"],
+    ["trygonometry", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Circle-trig6.svg/1200px-Circle-trig6.svg.png"],
+    ["the german language", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Legal_status_of_German_in_Europe.svg/1200px-Legal_status_of_German_in_Europe.svg.png"],
+    ["regex", "https://www.computerhope.com/jargon/r/regular-expression.gif"],
+    ["c++", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png"],
+    ["arch linux", "https://cdn0.iconfinder.com/data/icons/flat-round-system/512/archlinux-512.png"],
+    ["the collatz conjecture", "https://w7.pngwing.com/pngs/933/793/png-transparent-collatz-conjecture-mathematics-theorem-sequence-looking-up-blue-computer-wallpaper-graph-of-a-function.png"],
     // ["", ""],
 ]
 // Draw the image
