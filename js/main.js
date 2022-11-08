@@ -44,6 +44,7 @@ let badThings = [
     ["c++", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png"],
     ["arch linux", "https://cdn0.iconfinder.com/data/icons/flat-round-system/512/archlinux-512.png"],
     ["the collatz conjecture", "https://w7.pngwing.com/pngs/933/793/png-transparent-collatz-conjecture-mathematics-theorem-sequence-looking-up-blue-computer-wallpaper-graph-of-a-function.png"],
+    ["ząbki", "https://dawny.pl/wp-content/uploads/2019/06/1-41977985.jpg"],
     // ["", ""],
 ]
 // Draw the image
