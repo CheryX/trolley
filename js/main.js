@@ -18,7 +18,7 @@ let goodThings = [
     ["Szymon Strumień Odrzutowy", "https://steamuserimages-a.akamaihd.net/ugc/1838033402829795098/E7E7C3411D3F025260E2C81C32516578B2C2CA48/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false"],
     ["blåhaj", "https://www.ikea.com/pl/pl/images/products/blahaj-pluszak-rekin__0710175_pe727378_s5.jpg"],
     ["blåhaj junior", "https://www.ikea.com/pl/pl/images/products/blahaj-pluszak-maly-rekin__0716615_pe730956_s5.jpg"],
-    ["gordon freeman", "https://static.wikia.nocookie.net/half-life/images/3/3f/FreemanHL1.png/revision/latest?cb=20210424155951&path-prefix=en"],
+    ["gordon freeman", "https://static.wikia.nocookie.net/half-life/images/f/f3/Gordon_Freeman_%28Template%29.jpg/revision/latest?cb=20191221105246&path-prefix=en"],
     ["jesse pink", "https://static.wikia.nocookie.net/breakingbad/images/0/05/Season_2_-_Jesse.jpg"],
     ["waluigi", "https://mario.wiki.gallery/images/thumb/2/27/SuperMarioParty_Waluigi.png/1200px-SuperMarioParty_Waluigi.png"],
     ["wario", "https://upload.wikimedia.org/wikipedia/en/8/81/Wario.png"],
@@ -45,6 +45,11 @@ let badThings = [
     ["arch linux", "https://cdn0.iconfinder.com/data/icons/flat-round-system/512/archlinux-512.png"],
     ["the collatz conjecture", "https://w7.pngwing.com/pngs/933/793/png-transparent-collatz-conjecture-mathematics-theorem-sequence-looking-up-blue-computer-wallpaper-graph-of-a-function.png"],
     ["ząbki", "https://dawny.pl/wp-content/uploads/2019/06/1-41977985.jpg"],
+    ["praga północ", "https://cdn.mos.cms.futurecdn.net/c3c4fa66057f5b521aeaedd8574afdb9.jpg"],
+    ["recursion", "/assets/trolley.png"],
+    // ["", ""],
+    // ["", ""],
+    // ["", ""],
     // ["", ""],
 ]
 // Draw the image
