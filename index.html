@@ -1,30 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>(Troll)ey problems</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <h1>Trolley Problems</h1>
-    
-    <canvas width="1200" height="630" id="trolley"></canvas>
-
-    <div id="start" class="buttons">
-        <button>Start</button>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Abstract trolley problems</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      canvas {
+        border: 1px solid black;
+        margin-bottom: 20px;
+      }
+      .game {
+        display: none;
+      }
+      button,
+      select {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #backButton {
+        display: block;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="profileSelection">
+      <h1>Abstract <span id="secret">trolley</span> problems</h1>
+      <p>Select your profile:</p>
+      <div>
+        <select id="profileSelect">
+          <option value="everything">Everything</option>
+          <option value="school">Szkoła</option>
+          <option value="countries">Countries</option>
+          <option value="computer_science">Computer Science</option>
+          <option value="pkp">Polskie Koleje Państwowe</option>
+        </select>
+        <button id="beginButton">Begin</button>
+      </div>
     </div>
 
-    <h2 class="game">Who to kill?</h2>
-    <div id="game" class="buttons">
-        <button>Choice 1</button>
-        <button>Choice 2</button>
+    <div id="game" class="game">
+      <button id="backButton">Back</button>
+      <canvas id="trolley" width="1024" height="768"></canvas>
+      <div>
+        <span id="text">Choose what will stay:</span>
+        <button class="optionButton"></button>
+        <button class="optionButton"></button>
+      </div>
     </div>
 
-    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/cherry-box.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
+    <script>
+      $(document).ready(function () {
+        $("#secret").on("click", (e) => {
+          $("#profileSelect").append(
+            `<option value="uwuTorka">UwUtorka</option>`
+          );
+        });
+
+        const canvas = $("#trolley")[0];
+        const ctx = canvas.getContext("2d");
+        let profiles;
+
+        // Fetch data from JSON file
+        fetch("data.json")
+          .then((response) => response.json())
+          .then((data) => {
+            profiles = data;
+            initializeProfileSelection();
+          })
+          .catch((error) => console.error("Error fetching data:", error));
+
+        function initializeProfileSelection() {
+          $("#beginButton").click(function () {
+            const profile = $("#profileSelect").val();
+            startGame(profile);
+          });
+        }
+
+        function startGame(profile) {
+          $("#profileSelection").hide();
+          $("#game, .game").show();
+          roundIter(profile);
+        }
+
+        function backToProfileSelection() {
+          $("#game").hide();
+          $("#profileSelection").show();
+        }
+
+        function choose(choices) {
+          var index = Math.floor(Math.random() * choices.length);
+          return choices[index];
+        }
+
+        let choice;
+        async function roundIter(profile) {
+          let category = Math.random() > 0.5 ? "goodThings" : "badThings";
+
+          if (profile === "everything") {
+            const options = $("select#profileSelect option")
+              .map(function () {
+                return $(this).val();
+              })
+              .get();
+
+            options.shift();
+            choice = choose(options);
+          } else {
+            choice = profile;
+          }
+
+          let array = shuffle(profiles[choice][category]);
+
+          // Update buttons with options
+          $(".optionButton").each((i, button) => {
+            $(button).text(array[i].name);
+          });
+
+          $(".optionButton").attr("disabled", "disabled");
+
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          let template = new Image();
+          template.onload = () => ctx.drawImage(template, 0, 0);
+          template.src = "/assets/trolley.png";
+
+          let upperText = array.slice(0, 1).map((item) => ({
+            text: item.name,
+            color: "black",
+            font: "Roboto",
+          }));
+          let lowerText = array.slice(1, 2).map((item) => ({
+            text: item.name,
+            color: "black",
+            font: "Roboto",
+          }));
+
+          setTimeout(() => {
+            // Draw images
+            drawImage(ctx, 720, 150, 280, 180, array[0].image);
+            drawImage(ctx, 740, 400, 280, 180, array[1].image);
+
+            // Draw texts
+            textBox(ctx, 720, 60, 280, 100, upperText, 30, [1, 1]);
+            textBox(ctx, 740, 400 + 160, 280, 100, lowerText, 30, [1, 1]);
+
+            $(".optionButton").removeAttr("disabled");
+          }, 100);
+
+          $(".optionButton")
+            .off("click")
+            .on("click", function () {
+              let selectedOption = $(this).text();
+              roundIter(profile); // Start next round
+            });
+
+          // Back button functionality
+          $("#backButton")
+            .off("click")
+            .on("click", function () {
+              backToProfileSelection();
+            });
+        }
+
+        function shuffle(array) {
+          let currentIndex = array.length,
+            randomIndex;
+
+          while (currentIndex != 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            [array[currentIndex], array[randomIndex]] = [
+              array[randomIndex],
+              array[currentIndex],
+            ];
+          }
+
+          return array;
+        }
+
+        function drawImage(ctx, x, y, width, height, src) {
+          let img = new Image();
+          img.onload = () => {
+            ctx.drawImage(img, x, y, width, height);
+          };
+          img.src = src || "/assets/placeholder.png";
+        }
+      });
+    </script>
+  </body>
 </html>
